@@ -1,0 +1,24 @@
+name: hugo-deploy
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: hugo.sh
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          SITE_NAME: 1-hugo
+        run: |
+          cp -R public/* ${GITHUB_WORKSPACE}/built-site/
+          cd ${GITHUB_WORKSPACE}/built-site
+          git add .
+          git config user.name 'yyds5'
+          git config user.email 'yuhe2050@gmail.com'
+          git commit -m 'Updated site'
+          git push
