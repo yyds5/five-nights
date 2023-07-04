@@ -1,4 +1,4 @@
-baseURL = ''
+baseURL = 'https://yyds5.github.io/five-nights/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'PaperMod'
